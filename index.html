@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  	<head>
+		<!-- required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- bootstrap stylesheet -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<!-- custom stylesheet -->
+		<link rel="stylesheet" type="text/css" href="assets/styles/style.css">
+		<!-- title -->
+		<title>Tic Tac Toe</title>
+	</head>
+  	<body>
+		<!-- menu -->
+		<div id="menu" class="component menu rounded">
+			<form id="menu-form">
+				<div class="menu-form-container text-center">
+					<h1>Tic Tac Toe</h1>
+					<p>This game can be played either as a single player or two player. If played as a single player, the computer uses the minimax algorithm so that it can never be beaten.</p>
+				</div>
+				<div class="menu-form-container">
+					<div class="text-center">
+						<h6>Select the number of players</h6>
+					</div>
+					<div class="form-row justify-content-center">
+						<fieldset class="form-group">
+							<div class="form-check form-check-inline mx-3">
+								<label class="menu-form-radio form-check-label">
+									<input class="form-check-input" type="radio" name="players" value="single" checked>
+									<img class="img-fluid rounded" src="assets/resources/players/single.png" alt width="100" height="100">
+								</label>
+							</div>
+							<div class="form-check form-check-inline mx-3">
+								<label class="menu-form-radio form-check-label">
+									<input class="form-check-input" type="radio" name="players" value="multi">
+									<img class="img-fluid rounded" src="assets/resources/players/multi.png" alt width="100" height="100">
+								</label>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+				<div class="menu-form-container">
+					<div class="text-center">
+						<h6>Select the symbol for Player 1</h6>
+					</div>
+					<div class="form-row justify-content-center">
+						<fieldset class="form-group">
+							<div class="form-check form-check-inline mx-3">
+								<label class="menu-form-radio form-check-label">
+									<input class="form-check-input" type="radio" name="symbol" value="X" checked>
+									<img class="img-fluid rounded" src="assets/resources/symbols/cross.png" alt width="100" height="100">
+								</label>
+							</div>
+							<div class="form-check form-check-inline mx-3">
+								<label class="menu-form-radio form-check-label">
+									<input class="form-check-input" type="radio" name="symbol" value="O">
+									<img class="img-fluid rounded" src="assets/resources/symbols/circle.png" alt width="100" height="100">
+								</label>
+							</div>
+						</fieldset>
+					</div>
+					<div class="form-row justify-content-center">
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary">Play Game</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<!-- game -->
+		<div id="game" class="component game rounded">
+			<!-- board -->
+			<div class="board">
+				<!-- first row -->
+				<div class="row no-gutters justify-content-center">
+					<div class="col-md-3 col-2">
+						<div class="cell padding-top-3 padding-left-3 border-bottom-3 border-right-3">
+							<div id="cell-00" data-enabled="enabled">
+								<img class="img-fluid" src="assets/resources/symbols/blank.png">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 col-2">
+						<div class="cell padding-top-3 border-bottom-3 border-left-3 border-right-3">
+							<div id="cell-01" data-enabled="enabled">
+								<img class="img-fluid" src="assets/resources/symbols/blank.png">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 col-2">
+						<div class="cell padding-top-3 padding-right-3 border-bottom-3 border-left-3">
+							<div id="cell-02" data-enabled="enabled">
+								<img class="img-fluid" src="assets/resources/symbols/blank.png">
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- second row -->
+				<div class="row no-gutters justify-content-center">
+					<div class="col-md-3 col-2">
+						<div class="cell padding-left-3 border-top-3 border-bottom-3 border-right-3">
+							<div id="cell-03" data-enabled="enabled">
+								<img class="img-fluid" src="assets/resources/symbols/blank.png">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 col-2">
+						<div class="cell border-top-3 border-bottom-3 border-left-3 border-right-3">
+							<div id="cell-04" data-enabled="enabled">
+								<img class="img-fluid" src="assets/resources/symbols/blank.png">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 col-2">
+						<div class="cell padding-right-3 border-top-3 border-bottom-3 border-left-3">
+							<div id="cell-05" data-enabled="enabled">
+								<img class="img-fluid" src="assets/resources/symbols/blank.png">
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- third row -->
+				<div class="row no-gutters justify-content-center">
+					<div class="col-md-3 col-2">
+						<div class="cell padding-bottom-3 padding-left-3 border-top-3 border-right-3">
+							<div id="cell-06" data-enabled="enabled">
+								<img class="img-fluid" src="assets/resources/symbols/blank.png">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 col-2">
+						<div class="cell padding-bottom-3 border-top-3 border-left-3 border-right-3">
+							<div id="cell-07" data-enabled="enabled">
+								<img class="img-fluid" src="assets/resources/symbols/blank.png">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 col-2">
+						<div class="cell padding-bottom-3 padding-right-3 border-top-3 border-left-3">
+							<div id="cell-08" data-enabled="enabled">
+								<img class="img-fluid" src="assets/resources/symbols/blank.png">
+							</div>
+						</div>
+					</div>
+				</div>	
+			</div>
+
+			<!-- control bar -->
+			<div class="control-bar my-md-3 my-1">
+				<!-- info row -->
+				<div class="row justify-content-center">
+					<div class="col-md-6 col-4 text-center">
+						<p id="info" class="border rounded"></p>
+					</div>
+				</div>
+				<!-- button row -->
+				<div class="row justify-content-center">
+					<div class="col-md-3 col-2 text-center">
+						<button type="button" id="new-game" class="btn btn-primary btn-block">New Game</button>
+					</div>
+					<div class="col-md-3 col-2 text-center">
+						<button type="button" id="restart" class="btn btn-primary btn-block">Restart</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- jquery script -->
+		<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+		<!-- popper script -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<!-- bootstrap script -->
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<!-- custom script -->
+		<script type="text/javascript" src="assets/scripts/game.js"></script>
+  	</body>
+</html>
